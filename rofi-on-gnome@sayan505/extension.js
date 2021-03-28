@@ -18,7 +18,7 @@ function enable() {
 
         if (this.visible) { this.hide(); }
         else {
-            Util.spawn(['/bin/rofi', '-modi', 'drun,run', '-show', 'drun', '-show-icons', '-font', 'Segoe UI Regular 11']);
+            Util.spawn(['/bin/rofi', '-show', 'drun']);
         }
     };
 }
