@@ -1,1 +1,1 @@
-rofi_on_gnome
+Trigger Rofi on Gnome with Wayland by the Overview key.
