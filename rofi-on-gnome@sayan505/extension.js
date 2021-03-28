@@ -10,7 +10,8 @@ function init() {
 }
 
 function enable() {
-    originalToggleFunction = Overview.Overview.prototype['toggle'];     // save original toggle function
+    BAK_toggle_function = Overview.Overview.prototype['toggle'];    // save original toggle function
+
     Overview.Overview.prototype['toggle'] = 
     function rofi_on_wayland() {
         if (this.isDummy) { return; }
@@ -24,17 +25,6 @@ function enable() {
 
 function disable() {
     if (BAK_toggle_function !== null) {
-
-        // put the original back
-        Overview.Overview.prototype['toggle'] = BAK_toggle_function;
-
-        // "re"-bind 'panel-main-menu' to our monkeypatched function 
-        Main.wm.setCustomKeybindingHandler(
-            'panel-main-menu',
-            Shell.ActionMode.NORMAL |
-            Shell.ActionMode.OVERVIEW,
-            Main.sessionMode.hasOverview ? 
-                Main.overview.toggle.bind(Main.overview) : null
-      );
+        Overview.Overview.prototype['toggle'] = BAK_toggle_function;    // put the original back
     }
 }
